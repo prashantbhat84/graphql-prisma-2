@@ -1,14 +1,22 @@
-import { Prisma } from "prisma-binding";
-import { fragmentReplacements } from "./resolvers/index";
+"use strict";
 
-const prisma = new Prisma({
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+exports.default = undefined;
+
+var _prismaBinding = require("prisma-binding");
+
+var _index = require("./resolvers/index");
+
+var prisma = new _prismaBinding.Prisma({
   typeDefs: "src/generated/prisma.graphql",
   endpoint: process.env.PRISMA_ENDPOINT,
   secret: "prashantbhatudemy",
-  fragmentReplacements,
+  fragmentReplacements: _index.fragmentReplacements
 });
 
-export { prisma as default };
+exports.default = prisma;
 
 // prisma.query prisma.mutation prisma.subscription prisma.exists
 
