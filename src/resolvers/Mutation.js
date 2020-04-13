@@ -19,7 +19,9 @@ const Mutation = {
     });
     return {
       user,
-      token: jwt.sign({ userId: user.id }, "secret1", { expiresIn: "7d" }),
+      token: jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
+        expiresIn: "7d",
+      }),
     };
   },
   async loginUser(parent, args, { prisma }, info) {
@@ -36,7 +38,9 @@ const Mutation = {
     }
     return {
       user,
-      token: jwt.sign({ userId: user.id }, "secret1", { expiresIn: "10d" }),
+      token: jwt.sign({ userId: user.id }, process.env.JWT_SECRET, {
+        expiresIn: "10d",
+      }),
     };
   },
   async deleteUser(parent, args, { prisma, request }, info) {

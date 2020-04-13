@@ -7,7 +7,7 @@ const getUserId = (request, requireAuth = true) => {
   if (headers) {
     const token = headers.replace("Bearer ", "");
 
-    const decodedData = jwt.verify(token, "secret1");
+    const decodedData = jwt.verify(token, process.env.JWT_SECRET);
 
     return decodedData.userId;
   }
